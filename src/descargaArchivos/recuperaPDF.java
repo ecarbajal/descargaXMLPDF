@@ -12,9 +12,11 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 
+import model.Util;
+
 public class recuperaPDF {
 
-	public static void getPDF(String serie, String folio) {
+	public static void getPDF(String noPoliza, String serie, String folio) {
 		try {
 //			URL urlPDF = new URL("http://150.23.47.36/iwcfdWebCustom/getPdf?id="+serie+"-"+Integer.valueOf(folio)+"&x=0&estatus=1");//Desarrollo
 			
@@ -24,7 +26,7 @@ public class recuperaPDF {
 			
 			InputStream is = conexion.getInputStream();
 			
-			FileOutputStream fos = new FileOutputStream("C:\\PDF_XML\\PDF\\"+serie+"-"+Integer.valueOf(folio)+".pdf");
+			FileOutputStream fos = new FileOutputStream("C:\\PDF_XML\\PDF\\"+Util.anadeCeros(noPoliza)+"_"+serie+"-"+Integer.valueOf(folio)+".pdf");
 			
 			byte[] arreglo = new byte[1000];
 			int leido = is.read(arreglo);

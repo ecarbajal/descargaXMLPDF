@@ -79,6 +79,10 @@ public class ImplementConsole extends JFrame {
 			}
 		});
 	}
+	
+	public void iniciar() {
+		hilo.start();
+	}
 
 	// inner class
 	public class JTextAreaOutputStream extends OutputStream {

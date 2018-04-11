@@ -31,6 +31,7 @@ public class TestClient {
 	public void Consulta() throws IOException{
 		String serie="", folio="",cadena="";
 		int cont=1;
+		String ep = "";
 //		boolean validaCon = descarga(host, userHost, passHost, archivoEntrada, remoteFile1);
 		boolean validaCon = true;
 		if(validaCon) {
@@ -39,11 +40,13 @@ public class TestClient {
 			//descarga(server, userServ, passServ, archivoPaso,archivoSalida);
 			
 			while((cadena = b.readLine())!=null) {
+				ep = cadena.substring(39,41);
 				serie = cadena.substring(39, 43);
 				folio = cadena.substring(44, cadena.length()).trim();
-				recuperaXML.getXML(serie, folio);
-				recuperaPDF.getPDF(serie, folio);
-				System.out.println("Registro: " + cont);
+				if(ep.toUpperCase().equals("EP")) {
+					recuperaXML.getXML(serie, folio);
+					System.out.println("Registro: " + cont);
+				}
 				cont++;
 			}
 			b.close();
